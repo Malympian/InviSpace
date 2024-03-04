@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "python-template"
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+description = "Adds a musical symbol end slur after each sentence except the last regardless of punctuation. You can infer how this could be useful... I'm not liable for any "mistakes" made due to using the project. I made this out of curiosity."
+authors = ["Malympian <malympianduck.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.10.0,<3.12"
