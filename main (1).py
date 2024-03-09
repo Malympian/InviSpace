@@ -51,7 +51,7 @@ for i, quest_sentence in enumerate(
               invisible_hairs
           )  # Standard space followed by random invisible hair space
         else:
-          result += word + "\u0020"  # Standard space
+          result += word # Standard space
       else:  # If the last word in the sentence
         last_char = word[-1]
         if last_char in ['.', '!',
@@ -60,7 +60,7 @@ for i, quest_sentence in enumerate(
               invisible_hairs
           ) + last_char  # Random invisible hair space, punctuation
         else:  # If no punctuation mark at the end of the word
-          result += word + "\u0020"  # Standard space
+          result += word  # Standard space
     result += random.choice(
         invisible_hairs
     ) + " "  # Add random invisible hair space and space after the sentence
@@ -70,4 +70,3 @@ result = result.strip()
 
 # Display the result
 print("Result:", result)
-message.txt
