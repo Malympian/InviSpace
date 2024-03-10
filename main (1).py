@@ -5,27 +5,46 @@ import random
 user_input = input("Enter a multi-line sentence: \n")
 
 # List of invisible hairs
-invisible_hairs = ["\U0001D179", "\U0001D178", "\U0001D176", "\U0001D174", "\U0001D173"]
+invisible_hairs = [
+    "\U0001D179", "\U0001D178", "\U0001D176", "\U0001D174", "\U0001D173"
+]
 
 # Homoglyphs mapping, Some are skipped because they look too weird
 homoglyphs = {
-    'A': 'Α', 'a': 'а',
-    'B': 'Β', 'b': 'b',
-    'C': 'Ϲ', 'c': 'ϲ',
-    'E': 'Ε', 'e': 'е',
-    'H': 'Η', 'I': 'Ι', 
-    'i': 'і','J': 'Ј', 
-    'j': 'ј','K': 'Κ', 
-    'k': 'k', 'M': 'Μ', 
-    'm': 'm','O': 'Ο', 
-    'o': 'о','P': 'Ρ', 
-    'p': 'р','Q': 'R', 
-    'q': 'ԛ','S': 'Ѕ',   
-    's': 'ѕ','T': 'Τ', 
-    't': 't','W': 'W', 
-    'w': 'w', 'X': 'Χ', 
-    'x': 'х', 'Y': 'Ү', 
-    'y': 'у','Z': 'Ζ', 
+    'A': 'Α',
+    'a': 'а',
+    'B': 'Β',
+    'b': 'b',
+    'C': 'Ϲ',
+    'c': 'ϲ',
+    'E': 'Ε',
+    'e': 'е',
+    'H': 'Η',
+    'I': 'Ι',
+    'i': 'і',
+    'J': 'Ј',
+    'j': 'ј',
+    'K': 'Κ',
+    'k': 'k',
+    'M': 'Μ',
+    'm': 'm',
+    'O': 'Ο',
+    'o': 'о',
+    'P': 'Ρ',
+    'p': 'р',
+    'Q': 'R',
+    'q': 'ԛ',
+    'S': 'Ѕ',
+    's': 'ѕ',
+    'T': 'Τ',
+    't': 't',
+    'W': 'W',
+    'w': 'w',
+    'X': 'Χ',
+    'x': 'х',
+    'Y': 'Ү',
+    'y': 'у',
+    'Z': 'Ζ',
     'z': 'z',
 }
 
@@ -41,21 +60,34 @@ for i in range(len(sentences)):
 for i, sentence in enumerate(sentences):
   words = sentence.split(" ")
   # Ensure at least one word in a sentence has an invisible hair
-  words_with_length_greater_than_one = [word for word in words if len(word) > 1]
+  words_with_length_greater_than_one = [
+      word for word in words if len(word) > 1
+  ]
   if words_with_length_greater_than_one:  # Check if the list is not empty
     word_with_hair = random.choice(words_with_length_greater_than_one)
     for j, word in enumerate(words):
       if word and len(word) > 1:  # Ignore words that are only one letter
         if word == word_with_hair or random.random() < 0.67:  # 67% chance
-          insert_position = random.randint(1, len(word) - 1)  # Random position to insert the invisible hair space
-          word = word[:insert_position] + random.choice(invisible_hairs) + word[insert_position:]  # Insert the invisible hair space
+          insert_position = random.randint(
+              1,
+              len(word) -
+              1)  # Random position to insert the invisible hair space
+          word = word[:insert_position] + random.choice(
+              invisible_hairs) + word[
+                  insert_position:]  # Insert the invisible hair space
         # Homoglyph substitution
-        word = ''.join([homoglyphs[char] if char in homoglyphs and random.random() < 0.33 else char for char in word])
+        word = ''.join([
+            homoglyphs[char]
+            if char in homoglyphs and random.random() < 0.33 else char
+            for char in word
+        ])
       result += word  # Add the word to the result
       if j < len(words) - 1:  # If not the last word in the sentence
         result += " "  # Add a standard space between words
         if random.random() < 0.4:  # 40% chance
-          result += random.choice(invisible_hairs)  # Add random invisible hair space after the space
+          result += random.choice(
+              invisible_hairs
+          )  # Add random invisible hair space after the space
     if i < len(sentences) - 1:  # If not the last sentence
       result += " "  # Add space after the sentence
 
